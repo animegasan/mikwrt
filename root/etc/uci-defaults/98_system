@@ -1,0 +1,4 @@
+uci -q batch << EOI
+set luci.main.lang='en'
+commit luci
+EOI
