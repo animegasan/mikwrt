@@ -1,0 +1,6 @@
+uci -q batch << EOI
+set system.@system[0].hostname='MikWrt'
+set system.@system[0].zonename='Asia/Jakarta'
+set system.@system[0].timezone='WIB-7'
+uci commit system
+EOI
