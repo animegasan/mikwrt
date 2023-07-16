@@ -24,7 +24,6 @@ o.placeholder=3000
 o.default=3000
 o.datatype="port"
 o.optional = false
-o.description = translate("<input type='button' class='cbi-button cbi-button-apply' style=' text-align:center; font-weight:bold;' value='AdGuardHome Web:" .. httpport .. "' onclick=\"window.open('http://'+window.location.hostname+':" .. httpport .. "')\"/>")
 ---- update warning not safe
 local binmtime=uci:get("AdGuardHome","AdGuardHome","binmtime") or "0"
 local e=""
@@ -59,7 +58,7 @@ o.description=string.format(translate("core version:").."<strong><font id=\"upda
 local port=luci.sys.exec("awk '/  port:/{printf($2);exit;}' "..configpath.." 2>nul")
 if (port=="") then port="?" end
 ---- Redirect
-o = s:option(ListValue, "redirect", port..translate("Redirect"), translate("AdGuardHome redirect mode"))
+o = s:option(ListValue, "redirect", port..translate(" To Redirect"), translate("AdGuardHome redirect mode"))
 o.placeholder = "none"
 o:value("none", translate("none"))
 o:value("dnsmasq-upstream", translate("Run as dnsmasq upstream server"))
