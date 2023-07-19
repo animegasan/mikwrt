@@ -1,4 +1,8 @@
 uci -q batch << EOI
+set system.@system[0].hostname='MikWrt'
+set system.@system[0].timezone='WIB-7'
+set system.@system[0].zonename='Asia/Jakarta'
+commit system
 set luci.main.lang='en'
 commit luci
 EOI
