@@ -27,9 +27,9 @@ o.optional = false
 ---- update warning not safe
 local binmtime=uci:get("AdGuardHome","AdGuardHome","binmtime") or "0"
 local e=""
-if not fs.access(configpath) then e = e .. " " .. translate("no config") end
+if not fs.access(configpath) then e = e .. " " .. translate("No config") end
 if not fs.access(binpath) then
-	e=e.." "..translate("no core")
+	e=e.." "..translate("No core")
 else
 	local version=uci:get("AdGuardHome","AdGuardHome","version")
 	local testtime=fs.stat(binpath,"mtime")
@@ -60,7 +60,7 @@ if (port=="") then port="?" end
 ---- Redirect
 o = s:option(ListValue, "redirect", translate("Redirect to ")..port, translate("AdGuard Home redirect mode"))
 o.placeholder = "none"
-o:value("none", translate("none"))
+o:value("none", translate("None"))
 o:value("dnsmasq-upstream", translate("Run as dnsmasq upstream server"))
 o:value("redirect", translate("Redirect 53 port to AdGuard Home"))
 o:value("exchange", translate("Use port 53 replace dnsmasq"))
@@ -89,10 +89,10 @@ return value
 end
 --- upx
 o = s:option(ListValue, "upxflag", translate("Use upx to compress bin after download"))
-o:value("", translate("none"))
+o:value("", translate("None"))
 o:value("-1", translate("Compress faster"))
 o:value("-9", translate("Compress better"))
-o:value("--best", translate("Compress best (Can be slow for big files)"))
+o:value("--best", translate("Compress best [Can be slow for big files]"))
 o:value("--brute", translate("Try all available compression methods & filters [Slow]"))
 o:value("--ultra-brute", translate("Try even more compression variants [Very slow]"))
 o.default     = ""
@@ -196,13 +196,13 @@ o.template = "AdGuardHome/AdGuardHome_chpass"
 o.optional = true
 ---- upgrade protect
 o = s:option(MultiValue, "upprotect", translate("Keep files when system upgrade"))
-o:value("$binpath",translate(" Core bin"))
-o:value("$configpath",translate(" Config file"))
-o:value("$logfile",translate(" Log file"))
-o:value("$workdir/data/sessions.db",translate(" Sessions.db"))
-o:value("$workdir/data/stats.db",translate(" Stats.db"))
-o:value("$workdir/data/querylog.json",translate(" Querylog.json"))
-o:value("$workdir/data/filters",translate(" Filters"))
+o:value("$binpath",translate("Core bin"))
+o:value("$configpath",translate("Config file"))
+o:value("$logfile",translate("Log file"))
+o:value("$workdir/data/sessions.db",translate("Sessions.db"))
+o:value("$workdir/data/stats.db",translate("Stats.db"))
+o:value("$workdir/data/querylog.json",translate("Querylog.json"))
+o:value("$workdir/data/filters",translate("Filters"))
 o.widget = "checkbox"
 o.default = nil
 o.optional=true
@@ -215,10 +215,10 @@ local workdir = uci:get("AdGuardHome", "AdGuardHome", "workdir") or "/usr/bin/Ad
 o = s:option(MultiValue, "backupfile", translate("Backup workdir files when shutdown"))
 o1 = s:option(Value, "backupwdpath", translate("Backup workdir path"))
 local name
-o:value("filters",translate(" Filters"))
-o:value("stats.db",translate(" Stats.db"))
-o:value("querylog.json",translate(" Querylog.json"))
-o:value("sessions.db",translate(" Sessions.db"))
+o:value("filters",translate("Filters"))
+o:value("stats.db",translate("Stats.db"))
+o:value("querylog.json",translate("Querylog.json"))
+o:value("sessions.db",translate("Sessions.db"))
 o1:depends ("backupfile", "filters")
 o1:depends ("backupfile", "stats.db")
 o1:depends ("backupfile", "querylog.json")
@@ -258,11 +258,11 @@ end
 
 ----Crontab
 o = s:option(MultiValue, "crontab", translate("Crontab task"),translate("Please change time and args in crontab"))
-o:value("autoupdate",translate(" Auto update core"))
-o:value("cutquerylog",translate(" Auto tail querylog"))
-o:value("cutruntimelog",translate(" Auto tail runtime log"))
-o:value("autohost",translate(" Auto update ipv6 hosts and restart adh"))
-o:value("autogfw",translate(" Auto update gfwlist and restart adh"))
+o:value("autoupdate",translate("Auto update core"))
+o:value("cutquerylog",translate("Auto tail querylog"))
+o:value("cutruntimelog",translate("Auto tail runtime log"))
+o:value("autohost",translate("Auto update ipv6 hosts and restart adh"))
+o:value("autogfw",translate("Auto update gfwlist and restart adh"))
 o.widget = "checkbox"
 o.default = nil
 o.optional=true
