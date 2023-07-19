@@ -45,20 +45,20 @@ else
 	e=version..e
 end
 
-o = s:option(ListValue, "core_version", translate("Core Version"))
+o = s:option(ListValue, "core_version", translate("Core version"))
 o:value("latest", translate("Latest Version"))
 o:value("beta", translate("Beta Version"))
 o.default = "latest"
-o = s:option(Button, "restart", translate("Upgrade Core"))
+o = s:option(Button, "restart", translate("Upgrade core"))
 o.inputtitle=translate("Update core version")
 o.template = "AdGuardHome/AdGuardHome_check"
 o.showfastconfig=(not fs.access(configpath))
-o.description=string.format(translate("core version:").."<strong><font id=\"updateversion\" color=\"green\">%s </font></strong>",e)
+o.description=string.format(translate("Core Version: ").."<strong><font id=\"updateversion\" color=\"green\">%s </font></strong>",e)
 ---- port warning not safe
 local port=luci.sys.exec("awk '/  port:/{printf($2);exit;}' "..configpath.." 2>nul")
 if (port=="") then port="?" end
 ---- Redirect
-o = s:option(ListValue, "redirect", translate("Redirect To ")..port, translate("AdGuardHome redirect mode"))
+o = s:option(ListValue, "redirect", translate("Redirect to ")..port, translate("AdGuard Home redirect mode"))
 o.placeholder = "none"
 o:value("none", translate("none"))
 o:value("dnsmasq-upstream", translate("Run as dnsmasq upstream server"))
@@ -67,7 +67,7 @@ o:value("exchange", translate("Use port 53 replace dnsmasq"))
 o.default     = "none"
 o.optional = true
 ---- bin path
-o = s:option(Value, "binpath", translate("Bin Path"), translate("AdGuardHome Bin path if no bin will auto download"))
+o = s:option(Value, "binpath", translate("Bin path"), translate("AdGuard Home Bin path if no bin will auto download"))
 o.default = "/usr/bin/AdGuardHome/AdGuardHome"
 o.datatype = "string"
 o.optional = false
@@ -88,7 +88,7 @@ end
 return value
 end
 --- upx
-o = s:option(ListValue, "upxflag", translate("use upx to compress bin after download"))
+o = s:option(ListValue, "upxflag", translate("Use upx to compress bin after download"))
 o:value("", translate("none"))
 o:value("-1", translate("compress faster"))
 o:value("-9", translate("compress better"))
@@ -96,10 +96,10 @@ o:value("--best", translate("compress best(can be slow for big files)"))
 o:value("--brute", translate("try all available compression methods & filters [slow]"))
 o:value("--ultra-brute", translate("try even more compression variants [very slow]"))
 o.default     = ""
-o.description=translate("bin use less space,but may have compatibility issues")
+o.description=translate("Bin use less space, but may have compatibility issues")
 o.rmempty = true
 ---- config path
-o = s:option(Value, "configpath", translate("Config Path"), translate("AdGuardHome config path"))
+o = s:option(Value, "configpath", translate("Config path"), translate("AdGuard Home config path"))
 o.default     = "/etc/AdGuardHome.yaml"
 o.datatype    = "string"
 o.optional = false
@@ -120,7 +120,7 @@ end
 return value
 end
 ---- work dir
-o = s:option(Value, "workdir", translate("Work dir"), translate("AdGuardHome work dir include rules,audit log and database"))
+o = s:option(Value, "workdir", translate("Work dir"), translate("AdGuard Home work dir include rules, audit log and database"))
 o.default = "/usr/bin/AdGuardHome"
 o.datatype = "string"
 o.optional = false
@@ -142,7 +142,7 @@ else
 end
 end
 ---- log file
-o = s:option(Value, "logfile", translate("Runtime log file"), translate("AdGuardHome runtime Log file if 'syslog': write to system log;if empty no log"))
+o = s:option(Value, "logfile", translate("Runtime log file"), translate("AdGuard Home runtime Log file if 'syslog': write to system log; if empty no log"))
 o.datatype    = "string"
 o.rmempty = true
 o.validate=function(self, value)
@@ -189,7 +189,7 @@ o.default     = "tcp://208.67.220.220:5353"
 o.datatype    = "string"
 o.optional = true
 ---- chpass
-o = s:option(Value, "hashpass", translate("Change browser management password"), translate("Press load culculate model and culculate finally save/apply"))
+o = s:option(Value, "hashpass", translate("Change browser management password"), translate("Press load culculate model and culculate finally save / apply"))
 o.default     = ""
 o.datatype    = "string"
 o.template = "AdGuardHome/AdGuardHome_chpass"
@@ -267,7 +267,7 @@ o.widget = "checkbox"
 o.default = nil
 o.optional=true
 
-o = s:option(Value, "update_url", translate("Core Update URL"))
+o = s:option(Value, "update_url", translate("Core update url"))
 o.default = "https://github.com/AdguardTeam/AdGuardHome/releases/download/${Cloud_Version}/AdGuardHome_linux_${Arch}.tar.gz"
 o.placeholder = "https://github.com/AdguardTeam/AdGuardHome/releases/download/${Cloud_Version}/AdGuardHome_linux_${Arch}.tar.gz"
 o.rmempty = false
