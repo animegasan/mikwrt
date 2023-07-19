@@ -9,8 +9,8 @@ page.dependent = true
 page.acl_depends = { "luci-app-adguardhome" }
 	 entry({"admin", "services", "AdGuardHome", "overviews"}, cbi("AdGuardHome/overviews"),  _("Overviews"), 1).leaf = true
 	 entry({"admin", "services", "AdGuardHome", "settings"}, cbi("AdGuardHome/settings"), _("Settings"), 2).leaf = true
-	 entry({"admin", "services", "AdGuardHome", "manual"}, cbi("AdGuardHome/manual"), _("Manual Config"), 3).leaf = true
-	 entry({"admin", "services", "AdGuardHome", "log"}, form("AdGuardHome/log"), _("Log"), 4).leaf = true
+	 entry({"admin", "services", "AdGuardHome", "manuals"}, cbi("AdGuardHome/manuals"), _("Manual Config"), 3).leaf = true
+	 entry({"admin", "services", "AdGuardHome", "logs"}, form("AdGuardHome/logs"), _("Logs"), 4).leaf = true
 	 entry({"admin", "services", "AdGuardHome", "status"}, call("act_status")).leaf = true
 	 entry({"admin", "services", "AdGuardHome", "check"}, call("check_update"))
 	 entry({"admin", "services", "AdGuardHome", "doupdate"}, call("do_update"))
