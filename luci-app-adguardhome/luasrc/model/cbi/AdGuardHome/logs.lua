@@ -7,7 +7,7 @@ f.submit = false
 t=f:field(TextValue,"conf")
 t.rmempty=true
 t.rows=20
-t.template="AdGuardHome/log"
+t.template="AdGuardHome/logs"
 t.readonly="readonly"
 local logfile=uci:get("AdGuardHome","AdGuardHome","logfile") or ""
 t.timereplace=(logfile~="syslog" and logfile~="" )
