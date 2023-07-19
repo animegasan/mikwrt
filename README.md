@@ -1,5 +1,29 @@
-# MikroWrt
+---
 
-MikroWrt merupakan operasi sistem GNU / Linux yang berbasis firmware OpenWrt.
+<h1 align="center">MikWrt</h1>
+<h3 align="center">The Free Firmware For DIY Router</h3>
 
-Projek ini bertujuan untuk mengganti perangkat Mikrotik dengan perangkat DIY (Do It Yourself), seperti perangkat STB (Set-top box) HG-680P, perangkat berarsitektur ARM, dan perangkat komputer maupun virtualisasi operasi sistem (Proxmox).
+---
+
+<p align="center">
+<img alt="Logo Banner" src=""/>
+</p>
+
+---
+
+MikWrt is a GNU/Linux operating system based on OpenWrt firmware. MikWrt Firmware targets for DIY devices, such as ARM architecture devices (HG-680P, B860h, NanoPi), Personal Computers (PC), and virtual machines (Proxmox).
+
+---
+
+## Version
+### Version Beta
+* **0.1:**
+   - Do not use a password to log into LuCi
+   - Web Interface access via WAN or LAN
+
+---
+
+## Credit
+[Hilman Maulana](https://github.com/animegasan).
+
+---
