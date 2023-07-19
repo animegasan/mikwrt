@@ -1,4 +1,3 @@
---
 local NXFS = require "nixio.fs"
 
 m = Map("AdGuardHome")
