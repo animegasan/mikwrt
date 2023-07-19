@@ -46,8 +46,8 @@ else
 end
 
 o = s:option(ListValue, "core_version", translate("Core version"))
-o:value("latest", translate("Latest Version"))
-o:value("beta", translate("Beta Version"))
+o:value("latest", translate("Latest version"))
+o:value("beta", translate("Beta version"))
 o.default = "latest"
 o = s:option(Button, "restart", translate("Upgrade core"))
 o.inputtitle=translate("Update core version")
@@ -196,13 +196,13 @@ o.template = "AdGuardHome/AdGuardHome_chpass"
 o.optional = true
 ---- upgrade protect
 o = s:option(MultiValue, "upprotect", translate("Keep files when system upgrade"))
-o:value("$binpath",translate("core bin"))
-o:value("$configpath",translate("config file"))
-o:value("$logfile",translate("log file"))
-o:value("$workdir/data/sessions.db",translate("sessions.db"))
-o:value("$workdir/data/stats.db",translate("stats.db"))
-o:value("$workdir/data/querylog.json",translate("querylog.json"))
-o:value("$workdir/data/filters",translate("filters"))
+o:value("$binpath",translate(" Core bin"))
+o:value("$configpath",translate(" Config file"))
+o:value("$logfile",translate(" Log file"))
+o:value("$workdir/data/sessions.db",translate(" Sessions.db"))
+o:value("$workdir/data/stats.db",translate(" Stats.db"))
+o:value("$workdir/data/querylog.json",translate(" Querylog.json"))
+o:value("$workdir/data/filters",translate(" Filters"))
 o.widget = "checkbox"
 o.default = nil
 o.optional=true
@@ -215,10 +215,10 @@ local workdir = uci:get("AdGuardHome", "AdGuardHome", "workdir") or "/usr/bin/Ad
 o = s:option(MultiValue, "backupfile", translate("Backup workdir files when shutdown"))
 o1 = s:option(Value, "backupwdpath", translate("Backup workdir path"))
 local name
-o:value("filters","filters")
-o:value("stats.db","stats.db")
-o:value("querylog.json","querylog.json")
-o:value("sessions.db","sessions.db")
+o:value("filters",translate(" Filters"))
+o:value("stats.db",translate(" Stats.db"))
+o:value("querylog.json",translate(" Querylog.json"))
+o:value("sessions.db",translate(" Sessions.db"))
 o1:depends ("backupfile", "filters")
 o1:depends ("backupfile", "stats.db")
 o1:depends ("backupfile", "querylog.json")
@@ -234,7 +234,7 @@ end
 o.widget = "checkbox"
 o.default = nil
 o.optional=false
-o.description=translate("Will be restore when workdir/data is empty")
+o.description=translate("Will be restore when workdir / data is empty")
 ----backup workdir path
 
 o1.default = "/usr/bin/AdGuardHome"
@@ -258,11 +258,11 @@ end
 
 ----Crontab
 o = s:option(MultiValue, "crontab", translate("Crontab task"),translate("Please change time and args in crontab"))
-o:value("autoupdate",translate("Auto update core"))
-o:value("cutquerylog",translate("Auto tail querylog"))
-o:value("cutruntimelog",translate("Auto tail runtime log"))
-o:value("autohost",translate("Auto update ipv6 hosts and restart adh"))
-o:value("autogfw",translate("Auto update gfwlist and restart adh"))
+o:value("autoupdate",translate(" Auto update core"))
+o:value("cutquerylog",translate(" Auto tail querylog"))
+o:value("cutruntimelog",translate(" Auto tail runtime log"))
+o:value("autohost",translate(" Auto update ipv6 hosts and restart adh"))
+o:value("autogfw",translate(" Auto update gfwlist and restart adh"))
 o.widget = "checkbox"
 o.default = nil
 o.optional=true
