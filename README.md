@@ -18,10 +18,15 @@ MikWrt is a GNU/Linux operating system based on OpenWrt firmware. MikWrt Firmwar
 ## Version
 ### Version Beta
 * **0.1:**
-   - Do not use a password to log into LuCi
-   - Web Interface access via WAN or LAN
-   - Language using English
-   - Time zone using WIB (Indonesia)
+   - Dashboard
+     - Do not use a password to log into LuCi
+     - Web Interface access via WAN or LAN
+     - Language using English
+     - Time zone using WIB (Indonesia)
+   - Services
+     - AdGuard Home
+     - Disk Manager
+     - WAN MAC Address
 
 ---
 
