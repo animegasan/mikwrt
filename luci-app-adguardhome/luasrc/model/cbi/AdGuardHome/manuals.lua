@@ -54,7 +54,7 @@ o.validate=function(self, value)
 	else
 		return value
 	end
-	luci.http.redirect(luci.dispatcher.build_url("admin","services","AdGuardHome","manual"))
+	luci.http.redirect(luci.dispatcher.build_url("admin","services","AdGuardHome","manuals"))
 	return nil
 end
 o.write = function(self, section, value)
