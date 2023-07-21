@@ -27,6 +27,7 @@ MikWrt is a GNU/Linux operating system based on OpenWrt firmware. MikWrt Firmwar
      - AdGuard Home
      - Disk Manager
      - WAN MAC Address
+     - Wake on LAN +
 
 ---
 
