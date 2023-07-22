@@ -25,10 +25,10 @@ MikWrt is a GNU/Linux operating system based on OpenWrt firmware. MikWrt Firmwar
      - Time zone using WIB (Indonesia)
    - Services
      - AdGuard Home
-     - Disk Manager
      - WAN MAC Address
      - Wake on LAN +
      - ZeroTier
+     - Cloudflared
 
 ---
 
