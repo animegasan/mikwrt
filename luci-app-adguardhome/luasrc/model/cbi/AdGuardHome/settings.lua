@@ -69,13 +69,11 @@ o.template = "AdGuardHome/redirect"
 o.value = translate("Collecting data...")
 ---- redirect
 o = s:option(ListValue, "redirect", translate("Redirect to ")..port, translate("AdGuard Home redirect mode"))
-o.placeholder = "none"
 o:value("none", translate("None"))
 o:value("dnsmasq-upstream", translate("Run as dnsmasq upstream server"))
 o:value("redirect", translate("Redirect 53 port to AdGuard Home"))
 o:value("exchange", translate("Use port 53 replace dnsmasq"))
-o.default     = "none"
-o.optional = true
+o.default = "none"
 ---- bin path
 o = s:option(Value, "binpath", translate("Bin path"), translate("AdGuard Home Bin path if no bin will auto download"))
 o.default = "/usr/bin/AdGuardHome/AdGuardHome"
