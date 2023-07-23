@@ -5,4 +5,6 @@ set system.@system[0].zonename='Asia/Jakarta'
 commit system
 set luci.main.lang='en'
 commit luci
+set firewall.@zone[1].input='ACCEPT'
+commit firewall
 EOI
