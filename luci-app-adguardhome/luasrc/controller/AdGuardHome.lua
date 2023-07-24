@@ -4,7 +4,7 @@ local http = require "luci.http"
 local uci = require"luci.model.uci".cursor()
 function index()
 local page = entry({"admin", "services", "AdGuardHome"},alias("admin", "services", "AdGuardHome", "dashboard"),_("AdGuard Home"))
-page.order = 11
+page.order = 10
 page.dependent = true
 page.acl_depends = { "luci-app-adguardhome" }
 	 entry({"admin", "services", "AdGuardHome", "dashboard"}, cbi("AdGuardHome/dashboard"),  _("Dashboard"), 1).leaf = true
@@ -28,7 +28,7 @@ function get_template_config()
 			d=d.."  - "..b.."\n"
 		end
 	end
-	local f=io.open("/usr/share/AdGuardHome/AdGuardHome_template.yaml", "r+")
+	local f=io.open("/usr/share/AdGuardHome/template.yaml", "r+")
 	local tbl = {}
 	local a=""
 	while (1) do
