@@ -57,7 +57,7 @@ o:value("beta", translate("Beta version"))
 o.default = "latest"
 o = s:option(Button, "restart", translate("Upgrade core"))
 o.inputtitle=translate("Update core version")
-o.template = "AdGuardHome/AdGuardHome_check"
+o.template = "AdGuardHome/check"
 o.showfastconfig=(not fs.access(configpath))
 o.description=string.format(translate("Core Version: ").."<strong><font id=\"updateversion\" color=\"green\">%s </font></strong>",e)
 ---- port warning not safe
@@ -75,7 +75,7 @@ o:value("redirect", translate("Redirect 53 port to AdGuard Home"))
 o:value("exchange", translate("Use port 53 replace dnsmasq"))
 o.default = "none"
 ---- bin path
-o = s:option(Value, "binpath", translate("Bin path"), translate("AdGuard Home Bin path if no bin will auto download"))
+o = s:option(Value, "binpath", translate("Bin path"), translate("AdGuard Home bin path if no bin will auto download"))
 o.default = "/usr/bin/AdGuardHome/AdGuardHome"
 o.datatype = "string"
 o.optional = false
@@ -89,7 +89,7 @@ if fs.stat(value,"type")=="dir" then
 	if (m.message) then
 	m.message =m.message.."\nerror!bin path is a dir"
 	else
-	m.message ="error!bin path is a dir"
+	m.message ="ERROR! Bin path is a directory"
 	end
 	return nil
 end
@@ -121,14 +121,14 @@ if fs.stat(value,"type")=="dir" then
 	if m.message then
 	m.message =m.message.."\nerror!config path is a dir"
 	else
-	m.message ="error!config path is a dir"
+	m.message ="ERROR! Config path is a directory"
 	end
 	return nil
 end
 return value
 end
 ---- work dir
-o = s:option(Value, "workdir", translate("Work dir"), translate("AdGuard Home work dir include rules, audit log and database"))
+o = s:option(Value, "workdir", translate("Work directory"), translate("AdGuard Home work directory include rules, audit log and database"))
 o.default = "/usr/bin/AdGuardHome"
 o.datatype = "string"
 o.optional = false
@@ -139,7 +139,7 @@ if fs.stat(value,"type")=="reg" then
 	if m.message then
 	m.message =m.message.."\nerror!work dir is a file"
 	else
-	m.message ="error!work dir is a file"
+	m.message ="ERROR! Work directory is a file"
 	end
 	return nil
 end
@@ -161,7 +161,7 @@ if fs.stat(value,"type")=="dir" then
 	if m.message then
 	m.message =m.message.."\nerror!log file is a dir"
 	else
-	m.message ="error!log file is a dir"
+	m.message ="ERROR! Log file is a directory"
 	end
 	return nil
 end
@@ -178,29 +178,29 @@ a="Added"
 else
 a="Not added"
 end
-o=s:option(Button,"gfwdel",translate("Del gfwlist"),translate(a))
+o=s:option(Button,"gfwdel",translate("Delete gfwlist"),translate(a))
 o.optional = true
-o.inputtitle=translate("Del")
+o.inputtitle=translate("Delete")
 o.write=function()
 	luci.sys.exec("sh /usr/share/AdGuardHome/gfw2adg.sh del 2>&1")
-	luci.http.redirect(luci.dispatcher.build_url("admin","services","AdGuardHome"))
+	luci.http.redirect(luci.dispatcher.build_url("admin","services","AdGuardHome","settings"))
 end
 o=s:option(Button,"gfwadd",translate("Add gfwlist"),translate(a))
 o.optional = true
 o.inputtitle=translate("Add")
 o.write=function()
 	luci.sys.exec("sh /usr/share/AdGuardHome/gfw2adg.sh 2>&1")
-	luci.http.redirect(luci.dispatcher.build_url("admin","services","AdGuardHome"))
+	luci.http.redirect(luci.dispatcher.build_url("admin","services","AdGuardHome","settings"))
 end
 o = s:option(Value, "gfwupstream", translate("Gfwlist upstream dns server"), translate("Gfwlist domain upstream dns service")..translate(a))
 o.default     = "tcp://208.67.220.220:5353"
 o.datatype    = "string"
 o.optional = true
 ---- chpass
-o = s:option(Value, "hashpass", translate("Change browser management password"), translate("Press load culculate model and culculate finally save / apply"))
+o = s:option(Value, "hashpass", translate("Change browser management password"), translate("Press load calculation model and calculate finally save / apply"))
 o.default     = ""
 o.datatype    = "string"
-o.template = "AdGuardHome/AdGuardHome_chpass"
+o.template = "AdGuardHome/chpass"
 o.optional = true
 ---- upgrade protect
 o = s:option(MultiValue, "upprotect", translate("Keep files when system upgrade"))
@@ -215,7 +215,7 @@ o.widget = "checkbox"
 o.default = nil
 o.optional=true
 ---- wait net on boot
-o = s:option(Flag, "waitonboot", translate("On boot when network ok restart"))
+o = s:option(Flag, "waitonboot", translate("Start when the network restart is complete"))
 o.default = 1
 o.optional = true
 ---- backup workdir on shutdown
@@ -243,8 +243,7 @@ o.widget = "checkbox"
 o.default = nil
 o.optional=false
 o.description=translate("Will be restore when workdir / data is empty")
-----backup workdir path
-
+---- backup workdir path
 o1.default = "/usr/bin/AdGuardHome"
 o1.datatype    = "string"
 o1.optional = false
@@ -253,7 +252,7 @@ if fs.stat(value,"type")=="reg" then
 	if m.message then
 	m.message =m.message.."\nerror!backup dir is a file"
 	else
-	m.message ="error!backup dir is a file"
+	m.message ="ERROR! Backup directory is a file"
 	end
 	return nil
 end
@@ -263,8 +262,7 @@ else
 	return value
 end
 end
-
-----Crontab
+---- crontab
 o = s:option(MultiValue, "crontab", translate("Crontab task"),translate("Please change time and args in crontab"))
 o:value("autoupdate",translate("Auto update core"))
 o:value("cutquerylog",translate("Auto tail querylog"))
