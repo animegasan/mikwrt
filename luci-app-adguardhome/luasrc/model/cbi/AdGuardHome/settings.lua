@@ -172,27 +172,28 @@ o = s:option(Flag, "verbose", translate("Verbose log"))
 o.default = 0
 o.optional = true
 ---- gfwlist
-local a=luci.sys.call("grep -m 1 -q programadd "..configpath)
-if (a==0) then
-a="Added"
+local a="Status: "
+local b=luci.sys.call("grep -m 1 -q programadd "..configpath)
+if (b==0) then
+b="<font color=\"green\">Added</font>"
 else
-a="Not added"
+b="<font color=\"red\">Not added</font>"
 end
-o=s:option(Button,"gfwdel",translate("Delete gfwlist"),translate(a))
+o=s:option(Button,"gfwdel",translate("Delete gfwlist"),translate(a)..translate(b))
 o.optional = true
 o.inputtitle=translate("Delete")
 o.write=function()
 	luci.sys.exec("sh /usr/share/AdGuardHome/gfw2adg.sh del 2>&1")
 	luci.http.redirect(luci.dispatcher.build_url("admin","services","AdGuardHome","settings"))
 end
-o=s:option(Button,"gfwadd",translate("Add gfwlist"),translate(a))
+o=s:option(Button,"gfwadd",translate("Add gfwlist"),translate(a)..translate(b))
 o.optional = true
 o.inputtitle=translate("Add")
 o.write=function()
 	luci.sys.exec("sh /usr/share/AdGuardHome/gfw2adg.sh 2>&1")
 	luci.http.redirect(luci.dispatcher.build_url("admin","services","AdGuardHome","settings"))
 end
-o = s:option(Value, "gfwupstream", translate("Gfwlist upstream dns server"), translate("Gfwlist domain upstream dns service")..translate(a))
+o = s:option(Value, "gfwupstream", translate("Gfwlist upstream dns server"), translate("Gfwlist domain upstream dns service status ")..translate(b))
 o.default     = "tcp://208.67.220.220:5353"
 o.datatype    = "string"
 o.optional = true
