@@ -1,7 +1,7 @@
 local o = require "luci.sys"
 local a, t, e
 a = Map("cloudflared", translate("Cloudflare Zero Trust"))
-a.description = translate("Zero Trust Security services from Cloudflare to help you get maximum security both from outside and within the network.")
+a.description = translate("Zero Trust Security services from Cloudflare to help you get maximum security both from outside and within the network.") .. [[<br/><br/><a href="https://github.com/animegasan" target="_blank">Powered by animegasan</a>]]
 a.template = "cloudflared/index"
 
 t = a:section(NamedSection, "config", "cloudflared")
