@@ -216,7 +216,7 @@ o.widget = "checkbox"
 o.default = nil
 o.optional=true
 ---- wait net on boot
-o = s:option(Flag, "waitonboot", translate("Start when the network restart is complete"))
+o = s:option(Flag, "waitonboot", translate("Waiting network on boot"))
 o.default = 1
 o.optional = true
 ---- backup workdir on shutdown
