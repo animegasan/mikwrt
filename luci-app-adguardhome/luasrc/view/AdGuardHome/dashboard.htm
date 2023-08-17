@@ -1,4 +1,0 @@
-<iframe id="AdGuardHome" style="width: 100%; min-height: 100vh; border: none; border-radius: 2px;"></iframe>
-<script type="text/javascript">
-  document.getElementById("AdGuardHome").src = window.location.protocol + "//" + window.location.host + ":" + <%=luci.sys.exec("uci get AdGuardHome.AdGuardHome.httpport")%>;
-</script>
