@@ -7,4 +7,10 @@ set luci.main.lang='en'
 commit luci
 set firewall.@zone[1].input='ACCEPT'
 commit firewall
+delete network.lan
+delete network.@device[0]
+set network.wan=interface
+set network.wan.proto='dhcp'
+set network.wan.device='eth0'
+commit network
 EOI
